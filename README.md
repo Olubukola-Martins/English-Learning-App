@@ -1,5 +1,5 @@
 # English-Learning-App
-## URL:
+## URL: https://english-app-olubukola.netlify.app/
 
 ## Navigation
 The home page is the default landing page. This can also be accessed via the home icon in the nav bar at the bottom, first icon from the left.

@@ -10,27 +10,65 @@
       @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
       body {
         font-family: "Manrope", sans-serif;
-      };
-      .circle {
-  width: 91px;
-  height: 91px;
-  border: 4px solid transparent;
-  border-radius: 50%;
-  background-image: linear-gradient(white, white), linear-gradient(to right, red, orange);
-  background-origin: border-box;
-  background-clip: content-box, border-box;
-}
+      }
+      .skill_bar {
+        height: 91px;
+        width: 91px;
+        position: relative;
+      }
+      .outer_circle {
+        height: 91px;
+        width: 91px;
+        border-radius: 50%;
+        padding: 9px;
+        background: rgb(254, 215, 170);
+      }
+      .inner_circle {
+        margin: auto;
+        background-color: white;
+        height: 74px;
+        width: 74px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #value {
+        font-weight: 600;
+        color: black;
+      }
+      svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      circle {
+        fill: none;
+        stroke-width: 9px;
+        stroke: url("#linear");
+        stroke-dasharray: 255;
+        stroke-dashoffset: 255;
+        animation: animate 2s linear forwards;
+      }
+      @keyframes animate {
+        /* 0% {
+          stroke-dashoffset: 300;
+        } */
+        100% {
+          stroke-dashoffset: 77;
+        }
+      }
     </style>
     <script
       src="https://kit.fontawesome.com/1cf2dffb0c.js"
       crossorigin="anonymous"
     ></script>
   </head>
-  <body class="container bg-indigo-50 w-screen bg-opacity-60">
-    <main class="mx-auto mt-10 w-11/12 px-2">
-      <div class="flex justify-between pb-1">
+  <body class=" relative h-fit overflow-x-hidden bg-indigo-50 w-screen bg-opacity-60">
+    <main class="mx-auto mt-10 w-11/12 px-2 fixed top-0 left-0 right-0 overflow-y-auto h-[90vh] overflow-x-hidden">
+      <div class="flex justify-between pb-1 ">
         <div>
-          <p class="text-sm font-medium">Hello Rachel,</p>
+          <p class="text-sm font-semibold">Hello Rachel,</p>
           <p class="text-indigo-900 font-semibold opacity-75 text-base">
             Ready to <span class="text-orange-600">play English?</span>
           </p>
@@ -48,15 +86,25 @@
       <div
         class="mt-8 border-2 border-indigo-800 rounded-3xl opacity-70 bg-white h-fit py-4 px-6"
       >
-        <h4 class="text-xs text-indigo-900 font-semibold">Today's goal</h4>
+        <h4 class="text-xs text-indigo-900 font-semibold pl-2">Today's goal</h4>
         <div class="flex justify-between mt-1">
-          <!-- <div class="border-[9px] rounded-full bg-gradient-to-r bg-clip-border from-orange-600 from-70% to-orange-100"> -->
-          <p
-            class="font-bold border-[9px] rounded-full border-transparent  text-xl h-[91px] w-[91px] text-center py-6 mt-1"
-          >
-            70%
-          </p>
-          <!-- </div> -->
+          <div class="skill_bar">
+            <div class="outer_circle">
+              <div class="inner_circle">
+                <div id="value">70%</div>
+              </div>
+            </div>
+            <!-- creating svg -->
+            <svg width="91px" height="91px">
+              <defs>
+                <linearGradient id="linear">
+                  <stop offset="0%" stop-color="rgb(249,115,52)" />
+                  <stop offset="100%" stop-color="rgb(249,115,52)" />
+                </linearGradient>
+              </defs>
+              <circle cx="46" cy="46" r="41" stroke-linecap="round" />
+            </svg>
+          </div>
 
           <div class="mr-1">
             <p class="text-sm font-medium opacity-100">
@@ -74,90 +122,181 @@
           </div>
         </div>
       </div>
-<div class="font-bold border-[9px] rounded-full border-transparent  text-xl h-[91px] w-[91px] bg-gradient-to-r from-red-700 via-red-500 to-green-400"> <p class="bg-white h-full w-full rounded-full border-[9px]">H</p></div>
-
-      <section>
-        <div>
-          <h3>Your lesson</h3>
-          <i class="fa-solid fa-angle-right"></i>
+      <section class="mt-10 w-screen">
+        <div class="flex justify-between w-11/12 pr-[18px]">
+          <h3 class="font-semibold text-lg">Your lesson</h3>
+          <i
+            class="fa-solid fa-angle-right opacity-80 text-indigo-700 border-2 border-indigo-700 text-center pt-1 text-xs h-6 w-6 rounded-lg"
+          ></i>
         </div>
         <!--Your Lesson Cards Section -->
-        <div>
-          <!-- CARDS -->
-          <div>
-            <div><img src="" alt="" /></div>
-            <div>
-              <div>(straight line)</div>
-              <p>60%</p>
+        <div class="w-screen ">
+          <div
+            class="flex justify-between h-fit overflow-x-auto whitespace-nowrap flex-nowrap mt-6 pb-4"
+          >
+            <!-- CARDS -->
+            <div class="min-w-[35%] mr-8">
+              <div
+                class="border border-white bg-white rounded-2xl w-full h-[89px]"
+              >
+                <img src="" alt="" />
+              </div>
+              <div class="text-xs w-full flex font-semibold pt-2">
+                <div
+                  class="w-5/6 h-[10px] border rounded-md bg-indigo-200"
+                  value="60"
+                  max="100"
+                >
+                  <div
+                    class="h-full w-3/5 border-inherit opacity-75 bg-indigo-900 rounded-md"
+                  ></div>
+                </div>
+                <p>60%</p>
+              </div>
+              <p class="text-sm font-semibold pt-2">Speaking 101</p>
+              <p class="text-xs text-gray-400">30days <sup>.</sup> daily</p>
             </div>
-            <p>Speaking 101</p>
-            <p>30days <sup>.</sup> daily</p>
-          </div>
 
-          <div>
-            <div><img src="" alt="" /></div>
-            <div>
-              <div>(straight line)</div>
-              <p>60%</p>
+            <div class="min-w-[35%] mr-8">
+              <div
+                class="border border-white bg-white rounded-2xl w-full h-[89px]"
+              >
+                <img src="" alt="" />
+              </div>
+              <div
+                class="text-xs w-full flex justify-between font-semibold pt-2"
+              >
+                <div
+                  class="w-5/6 h-[10px] border rounded-md bg-indigo-200"
+                  value="60"
+                  max="100"
+                >
+                  <div
+                    class="h-full w-3/5 border-inherit opacity-75 bg-indigo-900 rounded-md"
+                  ></div>
+                </div>
+                <p>60%</p>
+              </div>
+              <p class="text-sm font-semibold pt-2">New words</p>
+              <p class="text-xs text-gray-400">90days <sup>.</sup> daily</p>
             </div>
-            <p>New words</p>
-            <p>90days <sup>.</sup> daily</p>
-          </div>
 
-          <div>
-            <div><img src="" alt="" /></div>
-            <div>
-              <div>(straight line)</div>
-              <p>60%</p>
+            <div class="min-w-[35%] mr-8">
+              <div
+                class="border border-white bg-white rounded-2xl w-full h-[89px]"
+              >
+                <img src="" alt="" />
+              </div>
+              <div class="text-xs w-full flex font-semibold pt-2">
+                <div
+                  class="w-5/6 h-[10px] border rounded-md bg-indigo-200"
+                  value="60"
+                  max="100"
+                >
+                  <div
+                    class="h-full w-3/5 border-inherit opacity-75 bg-indigo-900 rounded-md"
+                  ></div>
+                </div>
+                <p>60%</p>
+              </div>
+              <p class="text-sm font-semibold pt-2">Speaking 101</p>
+              <p class="text-xs text-gray-400">30days <sup>.</sup> daily</p>
             </div>
-            <p>Speaking 101</p>
-            <p>30days <sup>.</sup> daily</p>
           </div>
         </div>
       </section>
 
-      <section>
-        <div>
-          <h3>Leaderboard</h3>
-          <i class="fa-solid fa-angle-right"></i>
+      <section class="mt-6">
+        <div class="flex justify-between">
+          <h3 class="font-semibold text-lg">Leaderboard</h3>
+          <i
+            class="fa-solid fa-angle-right opacity-80 text-indigo-700 border-2 border-indigo-700 text-center pt-1 text-xs h-6 w-6 rounded-lg"
+          ></i>
         </div>
         <!--Leaderboard long cards Section -->
-        <div>
+        <div class="mt-6">
           <!-- LONG CARDS -->
-          <div>
-            <img src="" alt="" />
-            <div>
-              <p>Yasmine Lee</p>
-              <p>Taiwan</p>
+          <div
+            class="flex justify-between w-full bg-white border rounded-xl p-3"
+          >
+            <div class="flex">
+              <img
+                class="h-9 w-9 border-2 rounded-full border-orange-200"
+                src=""
+                alt=""
+              />
+              <div class="pl-3">
+                <p class="text-sm font-semibold">Yasmine Lee</p>
+                <p class="text-xs text-gray-400">Taiwan</p>
+              </div>
             </div>
-            <div>
-              <i class="fa-solid fa-arrow-up"></i>
-              <i class="fa-solid fa-fire-flame-curved fa-flip-horizontal"></i>
-              <p>1230</p>
+
+            <div class="flex w-1/5 justify-between py-2 pr-1">
+              <i class="fa-solid fa-arrow-up text-green-700"></i>
+              <div
+                class="flex w-[38px] justify-between font-semibold text-orange-600"
+              >
+                <i
+                  class="fa-solid fa-fire-flame-curved fa-flip-horizontal text-center text-sm"
+                ></i>
+                <p class="text-[11px]">1230</p>
+              </div>
             </div>
           </div>
 
-          <div>
-            <img src="" alt="" />
-            <div>
-              <p>Guy Hawkins</p>
-              <p>Spain</p>
+          <div
+            class="flex justify-between w-full bg-white border rounded-xl px-3 py-4 mt-4"
+          >
+            <div class="flex">
+              <img
+                class="h-9 w-9 border-2 rounded-full border-orange-200"
+                src=""
+                alt=""
+              />
+              <div class="pl-3">
+                <p class="text-sm font-semibold">Guy Hawkins</p>
+                <p class="text-xs text-gray-400">Spain</p>
+              </div>
             </div>
-            <div>
-              <i class="fa-solid fa-arrow-up"></i>
-              <i class="fa-solid fa-fire-flame-curved fa-flip-horizontal"></i>
-              <p>1130</p>
+
+            <div class="flex w-1/5 justify-between py-2 pr-1">
+              <i class="fa-solid fa-arrow-up text-green-700"></i>
+              <div
+                class="flex w-[38px] justify-between font-semibold text-orange-600"
+              >
+                <i
+                  class="fa-solid fa-fire-flame-curved fa-flip-horizontal text-center text-sm"
+                ></i>
+                <p class="text-[11px]">1130</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
     </main>
-    <!-- nav should be assigned fixed or sticky position -->
-    <nav>
-      <i class="fa-solid fa-house"></i>
-      <i class="fa-solid fa-chart-simple fa-flip-horizontal"></i>
-      <i class="fa-solid fa-user-group"></i>
-      <i class="fa-solid fa-gear"></i>
-    </nav>
-  </body>
+
+    <div class="overflow-hidden h-[9vh] fixed top-[91vh] left-0 right-0 bottom-0 w-screen ">
+      <nav class="bg-white shadow-inner shadow-gray-200 w-full flex pt-[18px] justify-around align-middle h-full border rounded-tl-3xl rounded-tr-3xl text-xl">
+        <i class="fa-solid fa-house text-gray-300 hover:text-indigo-800 active:text-indigo-800"><a href="./index.html"></a></i>
+        <i class="fa-solid fa-chart-simple fa-flip-horizontal text-gray-300 hover:text-indigo-800 active:text-indigo-800"></i>
+        <i class="fa-solid fa-user-group text-gray-300 hover:text-indigo-800 active:text-indigo-800"></i>
+        <i class="fa-solid fa-gear text-gray-300 hover:text-indigo-800 active:text-indigo-800"></i>
+      </nav>
+    </div>
+
+    </body>
+  <script type="text/javascript">
+    var number = document.getElementById("value");
+    var count_value = 0;
+    function running_animation() {
+      if (count_value == 70) {
+        clearInterval();
+      } else {
+        count_value = count_value + 1;
+        number.innerHTML = count_value + "%";
+      }
+    }
+    running_animation();
+    setInterval(running_animation, 30);
+  </script>
 </html>

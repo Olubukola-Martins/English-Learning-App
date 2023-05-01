@@ -657,6 +657,10 @@ video {
   margin-bottom: 2.5rem;
 }
 
+.mb-5 {
+  margin-bottom: 1.25rem;
+}
+
 .flex {
   display: flex;
 }
@@ -720,6 +724,10 @@ video {
 
 .h-\[82vh\] {
   height: 82vh;
+}
+
+.h-\[84vh\] {
+  height: 84vh;
 }
 
 .max-h-screen {
@@ -797,6 +805,14 @@ video {
 
 .scroll-mb-16 {
   scroll-margin-bottom: 4rem;
+}
+
+.scroll-mb-10 {
+  scroll-margin-bottom: 2.5rem;
+}
+
+.scroll-mb-2 {
+  scroll-margin-bottom: 0.5rem;
 }
 
 .grid-flow-row {

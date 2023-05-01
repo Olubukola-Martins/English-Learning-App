@@ -839,6 +839,22 @@ video {
   scroll-margin-bottom: 11vh;
 }
 
+.scroll-mb-\[1vh\] {
+  scroll-margin-bottom: 1vh;
+}
+
+.scroll-mb-\[vh\] {
+  scroll-margin-bottom: vh;
+}
+
+.scroll-mb-\[2vh\] {
+  scroll-margin-bottom: 2vh;
+}
+
+.scroll-mb-\[22vh\] {
+  scroll-margin-bottom: 22vh;
+}
+
 .grid-flow-row {
   grid-auto-flow: row;
 }
